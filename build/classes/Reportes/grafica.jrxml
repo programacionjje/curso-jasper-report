@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="beee2581-c3f0-47fd-891c-a6f5ab57d06c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     producto.`nombre` AS producto_nombre,
+     producto.`cantidad` AS producto_cantidad
+FROM
+     `producto` producto]]>
+	</queryString>
+	<field name="producto_nombre" class="java.lang.String"/>
+	<field name="producto_cantidad" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="39" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="2" width="332" height="37" uuid="9120420a-9247-43ea-9f5e-9a3fc1302c4d"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Arial Narrow" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grafica de Productos]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="278" splitType="Stretch">
+			<barChart>
+				<chart renderType="draw" theme="aegean">
+					<reportElement x="45" y="0" width="477" height="227" uuid="ea4d926d-29fd-4560-9d61-e78b8f578e7e"/>
+					<chartTitle position="Left"/>
+					<chartSubtitle/>
+					<chartLegend position="Left"/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{producto_cantidad}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{producto_nombre}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{producto_cantidad}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</summary>
+</jasperReport>
